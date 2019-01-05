@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+
 import 'package:vivarta/eventcomputing/computing.dart';
 import 'package:vivarta/eventrobotics/robotics.dart';
+
+import 'package:vivarta/drawerfiles/place.dart';
+import 'package:vivarta/drawerfiles/aboutus.dart';
+import 'package:vivarta/drawerfiles/contact.dart';
+import 'package:vivarta/drawerfiles/gallery.dart';
 
 
 
@@ -56,51 +62,157 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.indigo,
-      body: ListView(
-          children: <Widget>[
-            Wrap(
-              alignment: WrapAlignment.center,
+    if (isdataloaed == false) {
+      return Scaffold(
+        backgroundColor: Colors.white,
+        body: new Center(
+          child: CircularProgressIndicator(
+            backgroundColor: Colors.teal,
+            strokeWidth: 6.0,
+          ),
+        ),
+      );
+    } else {
+      return Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.blueGrey,
+          title: Text("Vivarta 2k19"),
+        ),
+          drawer: Drawer(
+            child: ListView(
               children: <Widget>[
-                ClipRRect(
-                  clipBehavior: Clip.hardEdge,
-                  borderRadius: BorderRadius.circular(10.0),
-                  child: Container(
-                    margin: EdgeInsets.only(top: 40.0),
-                    color: Colors.indigo,
-                    child: Text("Scroll Right for Events",style: TextStyle(fontSize: 30.0,color: Colors.white),),
-                  ),
-                )
+                Divider(height: 40.0,),
+                ListTile(
+                  title: Text("Schedule"),
+                  leading: Icon(Icons.calendar_today),
+                ),
+                Divider(height: 40.0,),
+                ListTile(
+                  title: Text("Sponsors"),
+                  leading: Icon(Icons.account_balance),
+                ),
+                Divider(height: 40.0,),
+                ListTile(
+                  title: Text("Contact"),
+                  leading: Icon(Icons.people),
+                  onTap: () {
+                    Navigator.of(context).pop();
+                    //  Navigator.of(context).pushNamed("/a");
+                    Navigator.of(context).push(new MaterialPageRoute(
+                        builder: (BuildContext context) => new Contact()));
+                  },
+                ),
+                Divider(height: 40.0,),
+                ListTile(
+                  title: Text("Place"),
+                  leading: Icon(Icons.place),
+                  onTap: () {
+                    Navigator.of(context).pop();
+                    //  Navigator.of(context).pushNamed("/a");
+                    Navigator.of(context).push(new MaterialPageRoute(
+                        builder: (BuildContext context) => new Place()));
+                  },
+                ),
+                Divider(height: 40.0,),
+                ListTile(
+                  title: Text("Image Gallery"),
+                  leading: Icon(Icons.image),
+                  onTap: () {
+                    Navigator.of(context).pop();
+                    //  Navigator.of(context).pushNamed("/a");
+                    Navigator.of(context).push(new MaterialPageRoute(
+                        builder: (BuildContext context) => new Gallery()));
+                  },
+                ),
+                Divider(height: 40.0,),
+                ListTile(
+                  title: Text("About Us"),
+                  leading: Icon(Icons.account_circle),
+                  onTap: () {
+                    Navigator.of(context).pop();
+                    //  Navigator.of(context).pushNamed("/a");
+                    Navigator.of(context).push(new MaterialPageRoute(
+                        builder: (BuildContext context) => new AboutUs()));
+                  },
+                ),
               ],
             ),
-            Divider(),
-            Container(
-              height: 150.0,
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: data == null ? 0 : data.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return GestureDetector(
-                    child: Image.network(data[index]['name']),
-                    onTap: () {
-                      if(index == 0) {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (BuildContext context) =>
-                                Computing()));
-                      }
-                      if(index == 1) {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (BuildContext context) =>
-                                Robotics()));
-                      }
-                    },
-                  );
-                },
+          ),
+          backgroundColor: Colors.white,
+          body: Container(
+                child: ListView(
+                  children: <Widget>[
+                    Divider(),
+                    Wrap(
+                      alignment: WrapAlignment.center,
+                      children: <Widget>[
+                        ClipRRect(
+                          clipBehavior: Clip.hardEdge,
+                          borderRadius: BorderRadius.circular(20.0),
+                          child: Container(
+                            child: Text("Tap on each to get Details",style: TextStyle(color: Colors.black54,fontSize: 30.0),),
+                          ),
+                        )
+                      ],
+                    ),
+                    Divider(),
+                    Row(
+                      children: <Widget>[
+                        GestureDetector(
+                          child: Container(
+                            margin: EdgeInsets.only(left: 0.0,right: 50.0),
+                            height: 150.0,
+                            width: 150.0,
+                            child: Image.network(data[1]['name']),
+                          ),
+                        ),
+                        GestureDetector(
+                          child: Container(
+                            height: 150.0,
+                            width: 150.0,
+                            child: Image.network(data[2]['name']),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Divider(),
+                    Row(
+                      children: <Widget>[
+                        GestureDetector(
+                          child: Container(
+                            margin: EdgeInsets.only(left: 100.0),
+                            height: 150.0,
+                            width: 150.0,
+                            child: Image.network(data[0]['name']),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Divider(),
+                    Row(
+                      children: <Widget>[
+                        GestureDetector(
+                          child: Container(
+                            margin: EdgeInsets.only(left: 0.0, right: 50.0),
+                            height: 150.0,
+                            width: 150.0,
+                            child: Image.network(data[3]['name']),
+                          ),
+                        ),
+                        GestureDetector(
+                          child: Container(
+                            height: 150.0,
+                            width: 150.0,
+                            child: Image.network(data[4]['name']),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Divider(),
+                  ],
+                ),
               )
-            )
-          ],
-        )
-    );
+      );
+    }
   }
 }
