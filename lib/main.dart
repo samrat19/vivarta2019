@@ -185,6 +185,11 @@ class _MyAppState extends State<MyApp> {
                             width: 150.0,
                             child: Image.network(data[0]['name']),
                           ),
+                          onTap: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (BuildContext context) =>
+                                    Computing()));
+                          },
                         ),
                       ],
                     ),

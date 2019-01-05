@@ -42,6 +42,15 @@ flutter:
     - gallery/vivartalogo.png
     - gallery/facebook.png
     - gallery/instagram.png
+    - gallery/pic.jpg
+    - gallery/pic1.jpg
+    - gallery/pic2.jpg
+    - gallery/pic3.jpg
+    - gallery/pic5.jpg
+    - gallery/pic6.jpg
+    - gallery/pic7.jpg
+    - gallery/pic8.jpg
+    - gallery/pic9.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.
