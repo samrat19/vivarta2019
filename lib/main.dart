@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
-import 'package:vivarta/eventcomputing/computing.dart';
-import 'package:vivarta/eventrobotics/robotics.dart';
+import 'package:vivarta/departments/computing.dart';
+import 'package:vivarta/departments/robotics.dart';
+import 'package:vivarta/departments/mechmania.dart';
+import 'package:vivarta/departments/cyberquest.dart';
+import 'package:vivarta/departments/fun.dart';
 
 import 'package:vivarta/drawerfiles/place.dart';
 import 'package:vivarta/drawerfiles/aboutus.dart';
@@ -64,13 +67,20 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     if (isdataloaed == false) {
       return Scaffold(
-        backgroundColor: Colors.white,
-        body: new Center(
-          child: CircularProgressIndicator(
-            backgroundColor: Colors.teal,
-            strokeWidth: 6.0,
-          ),
-        ),
+        backgroundColor: Colors.blueGrey,
+        body: ListView(
+            children: <Widget>[
+              Divider(height: 100.0,),
+              Vivlogo(),
+              Divider(height: 100.0,),
+              Center(
+                child: CircularProgressIndicator(
+                  backgroundColor: Colors.redAccent,
+                  strokeWidth: 6.0,
+                ),
+              ),
+            ],
+          )
       );
     } else {
       return Scaffold(
@@ -165,6 +175,11 @@ class _MyAppState extends State<MyApp> {
                             width: 150.0,
                             child: Image.network(data[1]['name']),
                           ),
+                          onTap: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (BuildContext context) =>
+                                    Robotics()));
+                          },
                         ),
                         GestureDetector(
                           child: Container(
@@ -172,6 +187,11 @@ class _MyAppState extends State<MyApp> {
                             width: 150.0,
                             child: Image.network(data[2]['name']),
                           ),
+                          onTap: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (BuildContext context) =>
+                                    Mechmania()));
+                          },
                         ),
                       ],
                     ),
@@ -203,6 +223,11 @@ class _MyAppState extends State<MyApp> {
                             width: 150.0,
                             child: Image.network(data[3]['name']),
                           ),
+                          onTap: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (BuildContext context) =>
+                                    Cyberquest()));
+                          },
                         ),
                         GestureDetector(
                           child: Container(
@@ -210,6 +235,11 @@ class _MyAppState extends State<MyApp> {
                             width: 150.0,
                             child: Image.network(data[4]['name']),
                           ),
+                          onTap: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (BuildContext context) =>
+                                    Fun()));
+                          },
                         ),
                       ],
                     ),
@@ -219,5 +249,19 @@ class _MyAppState extends State<MyApp> {
               )
       );
     }
+  }
+}
+
+class Vivlogo extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    AssetImage assetImage = new AssetImage('gallery/vivartalogo.png');
+    Image image = Image(image: assetImage);
+    return Container(
+      height: 200.0,
+      width: 300.0,
+      color: Colors.blueGrey,
+      child: image,
+    );
   }
 }

@@ -34,6 +34,32 @@ class Instalogo extends StatelessWidget {
   }
 }
 
+class Hc extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    AssetImage assetImage = new AssetImage('gallery/rohan.jpg');
+    Image image = Image(image: assetImage);
+    return Container(
+      height: 100.0,
+      width: 100.0,
+      child: image,
+    );
+  }
+}
+
+class Hc1 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    AssetImage assetImage = new AssetImage('gallery/souvik.jpg');
+    Image image = Image(image: assetImage);
+    return Container(
+      height: 100.0,
+      width: 100.0,
+      child: image,
+    );
+  }
+}
+
 class Contact extends StatefulWidget {
   @override
   _ContactState createState() => _ContactState();
@@ -54,7 +80,7 @@ class _ContactState extends State<Contact> {
           Container(
             color: Colors.white,
             height: 150.0,
-            width: 400.0,
+            width: 300.0,
             child: Center(
               child: Container(
                 height: 150.0,
@@ -63,12 +89,54 @@ class _ContactState extends State<Contact> {
               ),
             ),
           ),
+          Divider(),
+          Container(
+            height: 150.0,
+            width: 200.0,
+            child: ListView(
+              scrollDirection: Axis.horizontal,
+              children: <Widget>[
+                Container(
+                  height: 200.0,
+                  width: 120.0,
+                  child: ListView(
+                    children: <Widget>[
+                      Hc(),
+                      Text("         Rohan",style: TextStyle(fontSize: 15.0,),),
+                      Text("   99622 51881",style: TextStyle(fontSize: 15.0,),),
+                    ],
+                  ),
+                ),
+                Divider(),
+                Container(
+                  height: 200.0,
+                  width: 120.0,
+                  child: ListView(
+                    children: <Widget>[
+                      Hc1(),
+                      Text("           Souvik",style: TextStyle(fontSize: 15.0,),),
+                      Text("     90627 86568",style: TextStyle(fontSize: 15.0,),),
+                    ],
+                  ),
+                ),
+                Divider(),
+                Container(
+                  height: 200.0,
+                  width: 120.0,
+                  child: ListView(
+                    children: <Widget>[
+                      Hc1(),
+                      Text("              Souvik",style: TextStyle(fontSize: 15.0,),),
+                      Text("      90627 86568",style: TextStyle(fontSize: 15.0,),),
+                    ],
+                  ),
+                )
+              ],
+            ),
+          ),
+          Divider(),
           Container(
             height: 200.0,
-            width: 400.0,
-          ),
-          Container(
-            height: 250.0,
             width: 400.0,
             child: ListView(
               scrollDirection: Axis.vertical,
