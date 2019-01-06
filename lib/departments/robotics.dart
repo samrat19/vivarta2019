@@ -41,12 +41,12 @@ class _RoboticsState extends State<Robotics> {
     return "Success";
   }
 
-  void RegistrationForm() {
+  /* void RegistrationForm() {
     setState(() {
       Navigator.of(context).push(new MaterialPageRoute(
           builder: (BuildContext context) => new FormDetails()));
     });
-  }
+  } */
 
   @override
   Widget build(BuildContext context) {
@@ -184,7 +184,7 @@ class _RoboticsState extends State<Robotics> {
                     borderRadius: BorderRadius.circular(15.0),
                     clipBehavior: Clip.hardEdge,
                     child: MaterialButton(
-                      onPressed: RegistrationForm,
+                      onPressed: null,
                       color: Colors.grey,
                       splashColor: Colors.redAccent,
                       child: Text("Click to Register",
