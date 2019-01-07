@@ -92,7 +92,7 @@ class _MyAppState extends State<MyApp> {
       return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.black,
-          title: Text("Vivarta 2k19"),
+          title: Text("Vivarta 2k19",style: TextStyle(color: Colors.teal),),
         ),
           drawer: Drawer(
             child: Container(
@@ -178,7 +178,11 @@ class _MyAppState extends State<MyApp> {
                           clipBehavior: Clip.hardEdge,
                           borderRadius: BorderRadius.circular(20.0),
                           child: Container(
-                            child: Text("Tap on each to get Details",style: TextStyle(color: Colors.black54,fontSize: 30.0),),
+                            child: Text("Tap on each to get Details",
+                              style: TextStyle(
+                                  color: Colors.teal,
+                                  fontSize: 25.0),
+                            ),
                           ),
                         )
                       ],
@@ -189,8 +193,8 @@ class _MyAppState extends State<MyApp> {
                         GestureDetector(
                           child: Container(
                             margin: EdgeInsets.only(left: 0.0,right: 50.0),
-                            height: 150.0,
-                            width: 150.0,
+                            height: 100.0,
+                            width: 100.0,
                             child: Image.network(data[1]['name']),
                           ),
                           onTap: () {
@@ -200,10 +204,16 @@ class _MyAppState extends State<MyApp> {
                           },
                         ),
                         GestureDetector(
-                          child: Container(
-                            height: 150.0,
-                            width: 150.0,
-                            child: Image.network(data[2]['name']),
+                          child: Wrap(
+                            alignment: WrapAlignment.end,
+                            children: <Widget>[
+                              Container(
+                                margin: EdgeInsets.only(left: 50.0),
+                                height: 150.0,
+                                width: 150.0,
+                                child: Image.network(data[2]['name']),
+                              ),
+                            ],
                           ),
                           onTap: () {
                             Navigator.of(context).push(MaterialPageRoute(
@@ -217,11 +227,13 @@ class _MyAppState extends State<MyApp> {
                     Row(
                       children: <Widget>[
                         GestureDetector(
-                          child: Container(
-                            margin: EdgeInsets.only(left: 100.0),
-                            height: 150.0,
-                            width: 150.0,
-                            child: Image.network(data[0]['name']),
+                          child: Center(
+                            child: Container(
+                              margin: EdgeInsets.only(left: 130.0,top: 40.0),
+                              height: 100.0,
+                              width: 100.0,
+                              child: Image.network(data[0]['name']),
+                            ),
                           ),
                           onTap: () {
                             Navigator.of(context).push(MaterialPageRoute(
@@ -249,8 +261,9 @@ class _MyAppState extends State<MyApp> {
                         ),
                         GestureDetector(
                           child: Container(
-                            height: 150.0,
-                            width: 150.0,
+                            height: 120.0,
+                            width: 120.0,
+                            margin: EdgeInsets.only(left: 30.0,top: 50.0),
                             child: Image.network(data[4]['name']),
                           ),
                           onTap: () {
