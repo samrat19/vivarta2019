@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class Vivlogo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    AssetImage assetImage = new AssetImage('gallery/vivartalogo.png');
+    AssetImage assetImage = new AssetImage('gallery/logo.png');
     Image image = Image(image: assetImage);
     return Container(
       child: image,
@@ -20,14 +20,16 @@ class _AboutUsState extends State<AboutUs> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       appBar: AppBar(
-        title: Text("About Us"),
-        backgroundColor: Colors.blueGrey,
+        title: Text("About Us",style: TextStyle(color: Colors.white),),
+        backgroundColor: Colors.teal,
       ),
       body: ListView(
         children: <Widget>[
+          Divider(),
           Container(
-            color: Colors.white,
+            color: Colors.black,
             height: 150.0,
             width: 400.0,
             child: Center(
@@ -41,6 +43,7 @@ class _AboutUsState extends State<AboutUs> {
           Container(
             height:500.0,
             width: 400.0,
+            color: Colors.black,
             child: ListView(
               children: <Widget>[
                 Text("Holding true to it's name meaning 'Change' in Sanskrit, \n "
@@ -55,7 +58,7 @@ class _AboutUsState extends State<AboutUs> {
                     "them for creativity in the Technology domain. We introduce \n"
                     "all these passionate youth out there to compete with \n"
                     "each other in technology based Developments, discovery \n"
-                    "gaming, and fun portraits ",style: TextStyle(color: Colors.black87,fontSize: 15.0),)
+                    "gaming, and fun portraits ",style: TextStyle(color: Colors.teal,fontSize: 15.0),)
               ],
             ),
           )

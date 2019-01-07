@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class Vivlogo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    AssetImage assetImage = new AssetImage('gallery/vivartalogo.png');
+    AssetImage assetImage = new AssetImage('gallery/logo.png');
     Image image = Image(image: assetImage);
     return Container(
       child: image,
@@ -20,14 +20,16 @@ class _PlaceState extends State<Place> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       appBar: AppBar(
-        backgroundColor: Colors.blueGrey,
-        title: Text("Place"),
+        backgroundColor: Colors.teal,
+        title: Text("Place",style: TextStyle(color: Colors.white),),
       ),
       body: ListView(
         children: <Widget>[
+          Divider(),
           Container(
-            color: Colors.white,
+            color: Colors.black,
             height: 150.0,
             width: 400.0,
             child: Center(
@@ -41,14 +43,14 @@ class _PlaceState extends State<Place> {
           Container(
             height: 500.0,
             width: 400.0,
-            color: Colors.white,
+            color: Colors.black,
             child: ListView(
               children: <Widget>[
                 Divider(height: 50.0,),
                 Wrap(
                   alignment: WrapAlignment.center,
                   children: <Widget>[
-                    Text("Techno India University",style: TextStyle(fontSize: 34.5,color: Colors.black54),),
+                    Text("Techno India University",style: TextStyle(fontSize: 25.5,color: Colors.teal),),
                   ],
                 ),
                 Divider(height: 30.0),
@@ -62,7 +64,7 @@ class _PlaceState extends State<Place> {
                 Wrap(
                   alignment: WrapAlignment.center,
                   children: <Widget>[
-                    Text("EM 4/1 Sector 5, Salt Lake, Kolkata , West Bengal",style: TextStyle(fontSize: 30.5,color: Colors.black54),),
+                    Text("EM 4/1 Sector 5, Salt Lake, Kolkata , West Bengal",style: TextStyle(fontSize: 20.5,color: Colors.teal),),
                   ],
                 ),
               ],

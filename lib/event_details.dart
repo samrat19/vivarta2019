@@ -68,83 +68,92 @@ class _EventDetailsState extends State<EventDetails> {
             title: Text(this.name),
             backgroundColor: Colors.blueGrey,
           ),
-          body: ListView(
+          body: Stack(
+            fit: StackFit.expand,
             children: <Widget>[
-              Wrap(
-                alignment: WrapAlignment.center,
-                children: <Widget>[
-                  ClipRRect(
-                    clipBehavior: Clip.hardEdge,
-                    borderRadius: BorderRadius.circular(10.0),
-                    child: Container(
-                      margin: EdgeInsets.only(top: 40.0),
-                      color: Colors.redAccent,
-                      child: Text("Event Coordinators",
-                        style: TextStyle(fontSize: 30.0, color: Colors.white),),
-                    ),
-                  )
-                ],
+              Image(
+                image: AssetImage("gallery/wall.png"),
+                fit: BoxFit.cover,
               ),
-              Divider(),
-              Container(
-                height: 200.0,
-                color: Colors.white,
-                margin: EdgeInsets.symmetric(vertical: 20.0),
-                child: ListView.builder(
-                  scrollDirection: Axis.vertical,
-                  itemCount: data == null ? 0 : data.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return GestureDetector(
-                      child: Container(
-                        height: 100.0,
-                        width: 300.0,
-                        child: Row(
-                          children: <Widget>[
-                            Container(
-                              width: 100.0,
-                              child: Image.network(data[index]['dp']),
-                            ),
-                            Container(
-                              width: 150.0,
-                              child: ListView(
-                                children: <Widget>[
-                                  Divider(),
-                                  Text(data[index]['name']),
-                                  Text(data[index]['role']),
-                                  Text(data[index]['contact'])
-                                ],
-                              ),
-                            )
-                          ],
+              ListView(
+                children: <Widget>[
+                  Wrap(
+                    alignment: WrapAlignment.center,
+                    children: <Widget>[
+                      ClipRRect(
+                        clipBehavior: Clip.hardEdge,
+                        borderRadius: BorderRadius.circular(10.0),
+                        child: Container(
+                          margin: EdgeInsets.only(top: 40.0),
+                          color: Colors.redAccent,
+                          child: Text("Event Coordinators",
+                            style: TextStyle(fontSize: 30.0, color: Colors.white),),
                         ),
-                      ),
-                    );
-                  },
-                ),
-              ),
-              Wrap(
-                alignment: WrapAlignment.center,
-                children: <Widget>[
-                  ClipRRect(
-                    clipBehavior: Clip.hardEdge,
-                    borderRadius: BorderRadius.circular(10.0),
-                    child: Container(
-                      margin: EdgeInsets.only(top: 40.0),
-                      color: Colors.redAccent,
-                      child: Text("Event Rules",
-                        style: TextStyle(fontSize: 30.0, color: Colors.white),),
+                      )
+                    ],
+                  ),
+                  Divider(),
+                  Container(
+                    height: 200.0,
+                    color: Colors.white,
+                    margin: EdgeInsets.symmetric(vertical: 20.0),
+                    child: ListView.builder(
+                      scrollDirection: Axis.vertical,
+                      itemCount: data == null ? 0 : data.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return GestureDetector(
+                          child: Container(
+                            height: 100.0,
+                            width: 300.0,
+                            child: Row(
+                              children: <Widget>[
+                                Container(
+                                  width: 100.0,
+                                  child: Image.network(data[index]['dp']),
+                                ),
+                                Container(
+                                  width: 150.0,
+                                  child: ListView(
+                                    children: <Widget>[
+                                      Divider(),
+                                      Text(data[index]['name']),
+                                      Text(data[index]['role']),
+                                      Text(data[index]['contact'])
+                                    ],
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        );
+                      },
                     ),
-                  )
+                  ),
+                  Wrap(
+                    alignment: WrapAlignment.center,
+                    children: <Widget>[
+                      ClipRRect(
+                        clipBehavior: Clip.hardEdge,
+                        borderRadius: BorderRadius.circular(10.0),
+                        child: Container(
+                          margin: EdgeInsets.only(top: 40.0),
+                          color: Colors.redAccent,
+                          child: Text("Event Rules",
+                            style: TextStyle(fontSize: 30.0, color: Colors.white),),
+                        ),
+                      )
+                    ],
+                  ),
+                  Divider(),
+                  Container(
+                    color: Colors.grey,
+                    height: 100.0,
+                    child: Text(this.rules,
+                      style: TextStyle(color: Colors.white, fontSize: 20.0),),
+                  ),
+                  Divider(),
                 ],
-              ),
-              Divider(),
-              Container(
-                color: Colors.grey,
-                height: 100.0,
-                child: Text(this.rules,
-                  style: TextStyle(color: Colors.white, fontSize: 20.0),),
-              ),
-              Divider(),
+              )
             ],
           )
       );

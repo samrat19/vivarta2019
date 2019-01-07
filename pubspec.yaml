@@ -24,6 +24,12 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_launcher_icons: ^0.6.1
+
+flutter_icons:
+  image_path: gallery/icon.png
+  android: true
+  ios: true
 
 
 # For information on the generic Dart part of this file, see the
@@ -39,20 +45,12 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - gallery/vivartalogo.png
     - gallery/facebook.png
     - gallery/instagram.png
-    - gallery/pic.jpg
-    - gallery/pic1.jpg
-    - gallery/pic2.jpg
-    - gallery/pic3.jpg
-    - gallery/pic5.jpg
-    - gallery/pic6.jpg
-    - gallery/pic7.jpg
-    - gallery/pic8.jpg
-    - gallery/pic9.jpg
-    - gallery/rohan.jpg
-    - gallery/souvik.jpg
+    - gallery/male.png
+    - gallery/icon.png
+    - gallery/logo.png
+    - gallery/wall.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.

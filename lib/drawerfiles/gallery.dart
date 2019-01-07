@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 
 class Vivlogo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    AssetImage assetImage = new AssetImage('gallery/vivartalogo.png');
+    AssetImage assetImage = new AssetImage('gallery/logo.png');
     Image image = Image(image: assetImage);
     return Container(
+      height: 200.0,
+      width: 300.0,
+      color: Colors.black,
       child: image,
     );
   }
@@ -17,151 +22,120 @@ class Gallery extends StatefulWidget {
 }
 
 class _GalleryState extends State<Gallery> {
+
+  final String url =
+      "https://www.jasonbase.com/things/V8pK.json";
+  List data;
+  bool isdataloaed = false;
+
+  @override
+  void initState() {
+    super.initState();
+    this.getJsonData();
+  }
+
+  Future<String> getJsonData() async {
+    var response = await http.get(
+
+      //encoding url
+        Uri.encodeFull(url),
+        headers: {"Accept": "application/json"});
+
+    print(response.body);
+
+    setState(() {
+      var convertDataToJson = json.decode(response.body);
+      data = convertDataToJson['pics'];
+      isdataloaed = true;
+    });
+
+    return "Success";
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Image Gallery"),
-        backgroundColor: Colors.blueGrey,
-      ),
-      body: ListView(
-        children: <Widget>[
-          Container(
-            color: Colors.white,
-            height: 150.0,
-            width: 400.0,
-            child: Center(
-              child: Container(
-                height: 150.0,
-                width: 100.0,
-                child: Vivlogo(),
+    if (isdataloaed == false) {
+      return Scaffold(
+          backgroundColor: Colors.black,
+          body: ListView(
+            children: <Widget>[
+              Divider(height: 100.0,),
+              Vivlogo(),
+              Divider(height: 100.0,),
+              Center(
+                child: CircularProgressIndicator(
+                  backgroundColor: Colors.redAccent,
+                  strokeWidth: 6.0,
+                ),
+              ),
+            ],
+          )
+      );
+    }else {
+      return Scaffold(
+        backgroundColor: Colors.black,
+        appBar: AppBar(
+          title: Text("Image Gallery", style: TextStyle(color: Colors.white),),
+          backgroundColor: Colors.teal,
+        ),
+        body: ListView(
+          children: <Widget>[
+            Divider(),
+            Container(
+              color: Colors.black,
+              height: 150.0,
+              width: 400.0,
+              child: Center(
+                child: Container(
+                  height: 150.0,
+                  width: 100.0,
+                  child: Vivlogo(),
+                ),
               ),
             ),
-          ),
-          Container(
-            height: 300.0,
-            child: ListView(
-              children: <Widget>[
-                Wrap(
-                  alignment: WrapAlignment.center,
-                  children: <Widget>[
-                    Text("Swipe Right.......",style: TextStyle(fontSize: 40.0),)
-                  ],
-                ),
-                Divider(height: 30.0,),
-                Container(
-                  height: 200.0,
-                  child: ListView(
-                    scrollDirection: Axis.horizontal,
+            Container(
+              height: 250.0,
+              child: ListView(
+                children: <Widget>[
+                  Wrap(
+                    alignment: WrapAlignment.center,
                     children: <Widget>[
-                      Pic(), Pic1(), Pic2(), Pic3(), Pic5(), Pic6(), Pic7(), Pic8(), Pic9(),
+                      Text(
+                        "Swipe Right.......", style: TextStyle(fontSize: 20.0,color: Colors.teal),)
                     ],
                   ),
-                )
-              ],
+                  Divider(height: 10.0,),
+                  Container(
+                    height: 200.0,
+                    color: Colors.black,
+                    margin: EdgeInsets.symmetric(vertical: 20.0),
+                    child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: data == null ? 0 : data.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return Container(
+                            height: 100.0,
+                            width: 300.0,
+                            child: Image.network(data[index]['pic']),
+                        );
+                      },
+                    ),
+                  )
+                ],
+              ),
             ),
-          ),
-          Container(
-            height: 50.0,
-            margin: EdgeInsets.only(bottom: 0.0),
-            child: Center(
-              child: Text("Think Beyond Evolution...",style: TextStyle(color: Colors.black87,fontSize: 32.0),),
+            Divider(height:20.0),
+            Container(
+                height: 50.0,
+                margin: EdgeInsets.only(bottom: 0.0),
+                child: Center(
+                  child: Text("Think Beyond Evolution...",
+                    style: TextStyle(color: Colors.teal, fontSize: 20.0),),
+                )
             )
-          )
-        ],
-      ),
-    );
-  }
-}
-
-class Pic extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    AssetImage assetImage = new AssetImage('gallery/pic.jpg');
-    Image image = Image(image: assetImage);
-    return Container(
-      child: image,
-    );
-  }
-}
-class Pic1 extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    AssetImage assetImage = new AssetImage('gallery/pic1.jpg');
-    Image image = Image(image: assetImage);
-    return Container(
-      child: image,
-    );
-  }
-}
-
-class Pic2 extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    AssetImage assetImage = new AssetImage('gallery/pic2.jpg');
-    Image image = Image(image: assetImage);
-    return Container(
-      child: image,
-    );
-  }
-}
-class Pic3 extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    AssetImage assetImage = new AssetImage('gallery/pic3.jpg');
-    Image image = Image(image: assetImage);
-    return Container(
-      child: image,
-    );
-  }
-}
-class Pic5 extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    AssetImage assetImage = new AssetImage('gallery/pic5.jpg');
-    Image image = Image(image: assetImage);
-    return Container(
-      child: image,
-    );
-  }
-}
-class Pic6 extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    AssetImage assetImage = new AssetImage('gallery/pic6.jpg');
-    Image image = Image(image: assetImage);
-    return Container(
-      child: image,
-    );
-  }
-}
-class Pic7 extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    AssetImage assetImage = new AssetImage('gallery/pic7.jpg');
-    Image image = Image(image: assetImage);
-    return Container(
-      child: image,
-    );
-  }
-}
-class Pic8 extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    AssetImage assetImage = new AssetImage('gallery/pic8.jpg');
-    Image image = Image(image: assetImage);
-    return Container(
-      child: image,
-    );
-  }
-}
-class Pic9 extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    AssetImage assetImage = new AssetImage('gallery/pic.9jpg');
-    Image image = Image(image: assetImage);
-    return Container(
-      child: image,
-    );
+          ],
+        ),
+      );
+    }
   }
 }

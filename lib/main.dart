@@ -67,7 +67,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     if (isdataloaed == false) {
       return Scaffold(
-        backgroundColor: Colors.blueGrey,
+        backgroundColor: Colors.black,
         body: ListView(
             children: <Widget>[
               Divider(height: 100.0,),
@@ -79,77 +79,95 @@ class _MyAppState extends State<MyApp> {
                   strokeWidth: 6.0,
                 ),
               ),
+              Divider(height: 40.0,),
+              Text("make Sure you have Active Internet Connection.......",
+                style: TextStyle(
+                    color: Colors.teal,
+                    fontSize: 20.0),
+              )
             ],
           )
       );
     } else {
       return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.blueGrey,
+          backgroundColor: Colors.black,
           title: Text("Vivarta 2k19"),
         ),
           drawer: Drawer(
-            child: ListView(
-              children: <Widget>[
-                Divider(height: 40.0,),
-                ListTile(
-                  title: Text("Schedule"),
-                  leading: Icon(Icons.calendar_today),
-                ),
-                Divider(height: 40.0,),
-                ListTile(
-                  title: Text("Sponsors"),
-                  leading: Icon(Icons.account_balance),
-                ),
-                Divider(height: 40.0,),
-                ListTile(
-                  title: Text("Contact"),
-                  leading: Icon(Icons.people),
-                  onTap: () {
-                    Navigator.of(context).pop();
-                    //  Navigator.of(context).pushNamed("/a");
-                    Navigator.of(context).push(new MaterialPageRoute(
-                        builder: (BuildContext context) => new Contact()));
-                  },
-                ),
-                Divider(height: 40.0,),
-                ListTile(
-                  title: Text("Place"),
-                  leading: Icon(Icons.place),
-                  onTap: () {
-                    Navigator.of(context).pop();
-                    //  Navigator.of(context).pushNamed("/a");
-                    Navigator.of(context).push(new MaterialPageRoute(
-                        builder: (BuildContext context) => new Place()));
-                  },
-                ),
-                Divider(height: 40.0,),
-                ListTile(
-                  title: Text("Image Gallery"),
-                  leading: Icon(Icons.image),
-                  onTap: () {
-                    Navigator.of(context).pop();
-                    //  Navigator.of(context).pushNamed("/a");
-                    Navigator.of(context).push(new MaterialPageRoute(
-                        builder: (BuildContext context) => new Gallery()));
-                  },
-                ),
-                Divider(height: 40.0,),
-                ListTile(
-                  title: Text("About Us"),
-                  leading: Icon(Icons.account_circle),
-                  onTap: () {
-                    Navigator.of(context).pop();
-                    //  Navigator.of(context).pushNamed("/a");
-                    Navigator.of(context).push(new MaterialPageRoute(
-                        builder: (BuildContext context) => new AboutUs()));
-                  },
-                ),
-              ],
-            ),
+            child: Container(
+              color: Colors.black,
+              child: ListView(
+                children: <Widget>[
+                  Divider(),
+                  Vivlogo(),
+                  Divider(height: 10.0,),
+                  ListTile(
+                    title: Text("Schedule",style: TextStyle(color: Colors.teal,fontSize: 20.0),),
+                    leading: Icon(Icons.calendar_today,color: Colors.teal,size: 30.0,),
+                  ),
+                  Divider(height: 10.0,),
+                  ListTile(
+                    title: Text("Sponsors",style: TextStyle(color: Colors.teal,fontSize: 20.0),),
+                    leading: Icon(Icons.account_balance,color: Colors.teal,size: 35.0,),
+                  ),
+                  Divider(height: 10.0,),
+                  ListTile(
+                    title: Text("Contact",style: TextStyle(color: Colors.teal,fontSize: 20.0),),
+                    leading: Icon(Icons.people,color: Colors.teal,size: 30.0,),
+                    onTap: () {
+                      Navigator.of(context).pop();
+                      //  Navigator.of(context).pushNamed("/a");
+                      Navigator.of(context).push(new MaterialPageRoute(
+                          builder: (BuildContext context) => new Contact()));
+                    },
+                  ),
+                  Divider(height: 10.0,),
+                  ListTile(
+                    title: Text("Place",style: TextStyle(color: Colors.teal,fontSize: 20.0),),
+                    leading: Icon(Icons.place,size: 30.0,color: Colors.teal,),
+                    onTap: () {
+                      Navigator.of(context).pop();
+                      //  Navigator.of(context).pushNamed("/a");
+                      Navigator.of(context).push(new MaterialPageRoute(
+                          builder: (BuildContext context) => new Place()));
+                    },
+                  ),
+                  Divider(height: 10.0,),
+                  ListTile(
+                    title: Text("Image Gallery",style: TextStyle(color: Colors.teal,fontSize: 20.0),),
+                    leading: Icon(Icons.image,size: 30.0,color: Colors.teal,),
+                    onTap: () {
+                      Navigator.of(context).pop();
+                      //  Navigator.of(context).pushNamed("/a");
+                      Navigator.of(context).push(new MaterialPageRoute(
+                          builder: (BuildContext context) => new Gallery()));
+                    },
+                  ),
+                  Divider(height: 10.0,),
+                  ListTile(
+                    title: Text("About Us",style: TextStyle(color: Colors.teal,fontSize: 20.0),),
+                    leading: Icon(Icons.account_circle,size: 30.0,color: Colors.teal,),
+                    onTap: () {
+                      Navigator.of(context).pop();
+                      //  Navigator.of(context).pushNamed("/a");
+                      Navigator.of(context).push(new MaterialPageRoute(
+                          builder: (BuildContext context) => new AboutUs()));
+                    },
+                  ),
+                ],
+              ),
+            )
           ),
           backgroundColor: Colors.white,
-          body: Container(
+          body: Stack(
+            fit: StackFit.expand,
+            children: <Widget>[
+              Image(
+                image: AssetImage("gallery/wall.png"),
+                fit: BoxFit.cover,
+              ),
+              Container(
                 child: ListView(
                   children: <Widget>[
                     Divider(),
@@ -247,6 +265,8 @@ class _MyAppState extends State<MyApp> {
                   ],
                 ),
               )
+            ],
+          )
       );
     }
   }
@@ -255,12 +275,12 @@ class _MyAppState extends State<MyApp> {
 class Vivlogo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    AssetImage assetImage = new AssetImage('gallery/vivartalogo.png');
+    AssetImage assetImage = new AssetImage('gallery/logo.png');
     Image image = Image(image: assetImage);
     return Container(
       height: 200.0,
       width: 300.0,
-      color: Colors.blueGrey,
+      color: Colors.black,
       child: image,
     );
   }
