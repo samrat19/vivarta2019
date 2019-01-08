@@ -154,7 +154,7 @@ class _RoboticsState extends State<Robotics> {
                           margin: EdgeInsets.only(left: 0.0, right: 150.0),
                           height: 100.0,
                           width: 100.0,
-                          child: Image.network(data[4]['poster']),
+                          child: Image.network(data[3]['poster']),
                         ),
                         onTap: () {
                           String name = data[3]['name'];
