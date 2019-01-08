@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vivarta/drawerfiles/map.dart';
 
 class Vivlogo extends StatelessWidget {
   @override
@@ -57,7 +58,14 @@ class _PlaceState extends State<Place> {
                 Wrap(
                   alignment: WrapAlignment.center,
                   children: <Widget>[
-                    Icon(Icons.place,color: Colors.red,size: 120.0,),
+                    GestureDetector(
+                     child: Icon(Icons.place,color: Colors.red,size: 125.0,),
+                     onTap: (){
+                       Navigator.of(context).push(MaterialPageRoute(
+                           builder: (BuildContext context) =>
+                               Map()));
+                     },
+                    )
                   ],
                 ),
                 Divider(height: 30.0,),

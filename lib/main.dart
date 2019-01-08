@@ -13,6 +13,7 @@ import 'package:vivarta/drawerfiles/aboutus.dart';
 import 'package:vivarta/drawerfiles/contact.dart';
 import 'package:vivarta/drawerfiles/gallery.dart';
 import 'package:vivarta/drawerfiles/eventwiseplace.dart';
+import 'package:vivarta/drawerfiles/tutorial.dart';
 
 
 
@@ -164,6 +165,16 @@ class _MyAppState extends State<MyApp> {
                       //  Navigator.of(context).pushNamed("/a");
                       Navigator.of(context).push(new MaterialPageRoute(
                           builder: (BuildContext context) => new EventPlace()));
+                    },
+                  ),
+                  ListTile(
+                    title: Text("Tutorial",style: TextStyle(color: Colors.teal,fontSize: 20.0),),
+                    leading: Icon(Icons.book,size: 30.0,color: Colors.teal,),
+                    onTap: () {
+                      Navigator.of(context).pop();
+                      //  Navigator.of(context).pushNamed("/a");
+                      Navigator.of(context).push(new MaterialPageRoute(
+                          builder: (BuildContext context) => new Tutorial()));
                     },
                   )
                 ],
