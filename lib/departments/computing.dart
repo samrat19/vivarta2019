@@ -197,16 +197,6 @@ class _ComputingState extends State<Computing> {
                       ),
                     ],
                   ),
-                  Divider(),
-                  Wrap(
-                    alignment: WrapAlignment.center,
-                    children: <Widget>[
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(15.0),
-                        clipBehavior: Clip.hardEdge,
-                      )
-                    ],
-                  )
                 ],
               ),
             ),

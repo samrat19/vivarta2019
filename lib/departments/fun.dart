@@ -214,23 +214,6 @@ class _FunState extends State<Fun> {
                       ),
                     ],
                   ),
-                  Divider(),
-                  Wrap(
-                    alignment: WrapAlignment.center,
-                    children: <Widget>[
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(15.0),
-                        clipBehavior: Clip.hardEdge,
-                        child: MaterialButton(
-                          onPressed: null,
-                          color: Colors.grey,
-                          splashColor: Colors.redAccent,
-                          child: Text("Click to Register",
-                            style: TextStyle(color: Colors.white, fontSize: 20.0),),
-                        ),
-                      )
-                    ],
-                  )
                 ],
               ),
             ),
