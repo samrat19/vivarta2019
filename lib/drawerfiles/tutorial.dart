@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:vivarta/drawerfiles/url.dart';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 
 class Vivlogo extends StatelessWidget {
   @override
@@ -17,6 +20,37 @@ class Tutorial extends StatefulWidget {
 }
 
 class _TutorialState extends State<Tutorial> {
+
+
+  final String url =
+      "https://www.jasonbase.com/things/lxyB.json";
+  List data;
+  bool isdataloaed = false;
+
+  @override
+  void initState() {
+    super.initState();
+    this.getJsonData();
+  }
+
+  Future<String> getJsonData() async {
+    var response = await http.get(
+
+      //encoding url
+        Uri.encodeFull(url),
+        headers: {"Accept": "application/json"});
+
+    print(response.body);
+
+    setState(() {
+      var convertDataToJson = json.decode(response.body);
+      data = convertDataToJson['tutorial'];
+      isdataloaed = true;
+    });
+
+    return "Success";
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,47 +76,31 @@ class _TutorialState extends State<Tutorial> {
               ),
             ),
             Container(
-              height: 500.0,
-              width: 400.0,
+              height: 350.0,
               color: Colors.black,
-              child: ListView(
-                children: <Widget>[
-                  GestureDetector(
+              margin: EdgeInsets.symmetric(vertical: 20.0),
+              child: ListView.builder(
+                scrollDirection: Axis.vertical,
+                itemCount: data == null ? 0 : data.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return Container(
+                    height: 50.0,
                     child: Wrap(
                       alignment: WrapAlignment.center,
                       children: <Widget>[
-                        Text("Androjam Tutorial",style: TextStyle(color: Colors.teal,fontSize: 20.0),),
+                        GestureDetector(
+                          child: Text(data[index]['name'],style: TextStyle(fontSize: 20.0,color: Colors.teal)   ,),
+                          onTap: (){
+                            String url = data[index]['url'];
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (BuildContext context) =>
+                                    Url(url)));
+                          },
+                        )
                       ],
                     ),
-                  ),
-                  Divider(height: 40.0,),
-                  GestureDetector(
-                    child: Wrap(
-                      alignment: WrapAlignment.center,
-                      children: <Widget>[
-                        Text("Web Tutorial",style: TextStyle(color: Colors.teal,fontSize: 20.0),),
-                      ],
-                    ),
-                  ),
-                  Divider(height: 40.0,),
-                  GestureDetector(
-                    child: Wrap(
-                      alignment: WrapAlignment.center,
-                      children: <Widget>[
-                        Text("Edvac Tutorial",style: TextStyle(color: Colors.teal,fontSize: 20.0),),
-                      ],
-                    ),
-                  ),
-                  Divider(height: 40.0,),
-                  GestureDetector(
-                    child: Wrap(
-                      alignment: WrapAlignment.center,
-                      children: <Widget>[
-                        Text("Gothica Tutorial",style: TextStyle(color: Colors.teal,fontSize: 20.0),),
-                      ],
-                    ),
-                  )
-                ],
+                  );
+                },
               ),
             )
           ],

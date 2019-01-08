@@ -14,6 +14,7 @@ import 'package:vivarta/drawerfiles/contact.dart';
 import 'package:vivarta/drawerfiles/gallery.dart';
 import 'package:vivarta/drawerfiles/eventwiseplace.dart';
 import 'package:vivarta/drawerfiles/tutorial.dart';
+import 'package:vivarta/drawerfiles/credits.dart';
 
 
 
@@ -116,7 +117,7 @@ class _MyAppState extends State<MyApp> {
                   Divider(height: 10.0,),
                   ListTile(
                     title: Text("Contact",style: TextStyle(color: Colors.teal,fontSize: 20.0),),
-                    leading: Icon(Icons.people,color: Colors.teal,size: 30.0,),
+                    leading: Icon(Icons.wifi,color: Colors.teal,size: 30.0,),
                     onTap: () {
                       Navigator.of(context).pop();
                       //  Navigator.of(context).pushNamed("/a");
@@ -176,6 +177,16 @@ class _MyAppState extends State<MyApp> {
                       Navigator.of(context).push(new MaterialPageRoute(
                           builder: (BuildContext context) => new Tutorial()));
                     },
+                  ),
+                  ListTile(
+                    title: Text("Credits",style: TextStyle(color: Colors.teal,fontSize: 20.0),),
+                    leading: Icon(Icons.people,size: 30.0,color: Colors.teal,),
+                    onTap: () {
+                      Navigator.of(context).pop();
+                      //  Navigator.of(context).pushNamed("/a");
+                      Navigator.of(context).push(new MaterialPageRoute(
+                          builder: (BuildContext context) => new Credit()));
+                    },
                   )
                 ],
               ),
@@ -209,7 +220,7 @@ class _MyAppState extends State<MyApp> {
                         )
                       ],
                     ),
-                    Divider(),
+                    Divider(height: 40.0,),
                     Row(
                       children: <Widget>[
                         GestureDetector(
@@ -230,9 +241,9 @@ class _MyAppState extends State<MyApp> {
                             alignment: WrapAlignment.end,
                             children: <Widget>[
                               Container(
-                                margin: EdgeInsets.only(left: 50.0),
-                                height: 150.0,
-                                width: 150.0,
+                                margin: EdgeInsets.only(left: 100.0),
+                                height: 100.0,
+                                width: 100.0,
                                 child: Image.network(data[2]['name']),
                               ),
                             ],

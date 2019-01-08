@@ -72,7 +72,7 @@ class _PlaceState extends State<Place> {
                 Wrap(
                   alignment: WrapAlignment.center,
                   children: <Widget>[
-                    Text("EM 4/1 Sector 5, Salt Lake, Kolkata , West Bengal",style: TextStyle(fontSize: 20.5,color: Colors.teal),),
+                    Text("Tap on the marker to get Location",style: TextStyle(fontSize: 20.5,color: Colors.teal),),
                   ],
                 ),
               ],
