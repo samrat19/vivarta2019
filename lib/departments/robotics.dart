@@ -89,7 +89,7 @@ class _RoboticsState extends State<Robotics> {
                       ),
                     ],
                   ),
-                  Divider(),
+                  Divider(height: 40.0,),
                   Row(
                     children: <Widget>[
                       GestureDetector(
@@ -125,7 +125,7 @@ class _RoboticsState extends State<Robotics> {
                       ),
                     ],
                   ),
-                  Divider(),
+                  Divider(height: 50.0,),
                   Row(
                     children: <Widget>[
                       GestureDetector(
@@ -146,7 +146,7 @@ class _RoboticsState extends State<Robotics> {
                       ),
                     ],
                   ),
-                  Divider(),
+                  Divider(height: 50.0,),
                   Row(
                     children: <Widget>[
                       GestureDetector(

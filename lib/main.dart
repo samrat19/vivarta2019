@@ -241,7 +241,7 @@ class _MyAppState extends State<MyApp> {
                             alignment: WrapAlignment.end,
                             children: <Widget>[
                               Container(
-                                margin: EdgeInsets.only(left: 100.0),
+                                margin: EdgeInsets.only(left: 110.0),
                                 height: 100.0,
                                 width: 100.0,
                                 child: Image.network(data[2]['name']),
@@ -277,13 +277,14 @@ class _MyAppState extends State<MyApp> {
                       ],
                     ),
                     Divider(),
+                    Divider(),
                     Row(
                       children: <Widget>[
                         GestureDetector(
                           child: Container(
                             margin: EdgeInsets.only(left: 0.0, right: 50.0),
-                            height: 150.0,
-                            width: 150.0,
+                            height: 100.0,
+                            width: 100.0,
                             child: Image.network(data[3]['name']),
                           ),
                           onTap: () {
@@ -294,9 +295,9 @@ class _MyAppState extends State<MyApp> {
                         ),
                         GestureDetector(
                           child: Container(
-                            height: 120.0,
-                            width: 120.0,
-                            margin: EdgeInsets.only(left: 30.0,top: 50.0),
+                            height: 100.0,
+                            width: 100.0,
+                            margin: EdgeInsets.only(left: 110.0,top: 30.0),
                             child: Image.network(data[4]['name']),
                           ),
                           onTap: () {

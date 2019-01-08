@@ -125,7 +125,7 @@ class _MechmaniaState extends State<Mechmania> {
                       ),
                     ],
                   ),
-                  Divider(),
+                  Divider(height:60.0,),
                   Row(
                     children: <Widget>[
                       GestureDetector(
@@ -161,7 +161,7 @@ class _MechmaniaState extends State<Mechmania> {
                       ),
                     ],
                   ),
-                  Divider(),
+                  Divider(height: 60.0,),
                   Row(
                     children: <Widget>[
                       GestureDetector(

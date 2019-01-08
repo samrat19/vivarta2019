@@ -89,7 +89,7 @@ class _CyberquestState extends State<Cyberquest> {
                       ),
                     ],
                   ),
-                  Divider(),
+                  Divider(height: 50.0,),
                   Row(
                     children: <Widget>[
                       GestureDetector(

@@ -125,7 +125,7 @@ class _FunState extends State<Fun> {
                       ),
                     ],
                   ),
-                  Divider(),
+                  Divider(height: 60.0,),
                   Row(
                     children: <Widget>[
                       GestureDetector(
@@ -178,7 +178,7 @@ class _FunState extends State<Fun> {
                       ),
                     ],
                   ),
-                  Divider(),
+                  Divider(height: 60.0,),
                   Row(
                     children: <Widget>[
                       GestureDetector(
