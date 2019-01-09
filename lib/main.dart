@@ -15,6 +15,8 @@ import 'package:vivarta/drawerfiles/gallery.dart';
 import 'package:vivarta/drawerfiles/eventwiseplace.dart';
 import 'package:vivarta/drawerfiles/tutorial.dart';
 import 'package:vivarta/drawerfiles/credits.dart';
+import 'package:vivarta/drawerfiles/schedule.dart';
+import 'package:vivarta/drawerfiles/sponsers.dart';
 
 
 
@@ -108,11 +110,23 @@ class _MyAppState extends State<MyApp> {
                   ListTile(
                     title: Text("Schedule",style: TextStyle(color: Colors.teal,fontSize: 20.0),),
                     leading: Icon(Icons.calendar_today,color: Colors.teal,size: 30.0,),
+                    onTap: () {
+                      Navigator.of(context).pop();
+                      //  Navigator.of(context).pushNamed("/a");
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (BuildContext context) => Schedule()));
+                    },
                   ),
                   Divider(height: 10.0,),
                   ListTile(
                     title: Text("Sponsors",style: TextStyle(color: Colors.teal,fontSize: 20.0),),
                     leading: Icon(Icons.account_balance,color: Colors.teal,size: 35.0,),
+                    onTap: () {
+                      Navigator.of(context).pop();
+                      //  Navigator.of(context).pushNamed("/a");
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (BuildContext context) => Sponsers()));
+                    },
                   ),
                   Divider(height: 10.0,),
                   ListTile(
