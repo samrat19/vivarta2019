@@ -86,6 +86,7 @@ class _MyAppState extends State<MyApp> {
               ),
               Divider(height: 40.0,),
               Text("make Sure you have Active Internet Connection.......",
+                textAlign: TextAlign.center,
                 style: TextStyle(
                     color: Colors.teal,
                     fontSize: 20.0),
