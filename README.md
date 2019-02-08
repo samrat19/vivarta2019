@@ -4,7 +4,7 @@ University Techfest App
 
 # Welcome Screen
 
-![_20190108_005452](https://user-images.githubusercontent.com/30453784/50883674-c0e76a80-140e-11e9-9200-74335b0702bf.jpg)
+<img src ="https://user-images.githubusercontent.com/30453784/50883674-c0e76a80-140e-11e9-9200-74335b0702bf.jpg" width=300>
 
 
 ## Getting Started
